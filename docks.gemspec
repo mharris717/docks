@@ -5,13 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = "docks"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Harris"]
   s.date = "2013-07-10"
   s.description = "docks"
   s.email = "mharris717@gmail.com"
+  s.executables = ["docks_build", "docks_parse"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -25,14 +26,17 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "bin/docks_build",
+    "bin/docks_parse",
     "defs/mharris717.yml",
     "dockerfiles/rubybuild_rails",
     "docks.gemspec",
     "lib/docks.rb",
+    "lib/docks/build.rb",
     "lib/docks/line.rb",
     "lib/docks/list.rb",
     "lib/docks/parser.rb",
-    "spec/data/Basic.dock",
+    "spec/data/basic/Dockerfile",
     "spec/docks_spec.rb",
     "spec/spec_helper.rb"
   ]
