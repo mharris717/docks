@@ -13,7 +13,7 @@ module Docks
 
       cmd = "docker build #{ops_str} #{temp_dir}"
       puts cmd
-      exec cmd
+      exec cmd unless ops_str.to_s =~ /--mock/
     end
   end
 end
