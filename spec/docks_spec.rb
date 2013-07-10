@@ -6,7 +6,7 @@ describe "Docks" do
   end
 
   it 'basic' do
-    file = File.dirname(__FILE__)+"/data/Basic.dock"
+    file = File.dirname(__FILE__)+"/data/basic/Dockerfile"
     Docks.parsed(file).should =~ /gem install bundler/
   end
 end

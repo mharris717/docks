@@ -15,12 +15,17 @@ module Docks
       handle_yaml_hash(from_yaml)
     end
 
+    def get_remote_path(path)
+      dir = "https://raw.github.com/mharris717/docks/master/dockerfiles"
+      "#{dir}/#{path}"
+    end
+
     def expand_dock_path(path)
       if path =~ /http/i
         path
       else
-        dir = File.expand_path(File.dirname(__FILE__)+"/../../dockerfiles")
-        "#{dir}/#{path}"
+        
+        get_remote_path path
       end
     end
 
