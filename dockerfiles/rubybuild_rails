@@ -1,0 +1,27 @@
+# setup libs
+RUN apt-get update -yq
+RUN apt-get install curl build-essential wget -yq
+RUN apt-get install libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion -yq
+
+# Download the ruby-build code
+RUN \curl -L https://github.com/sstephenson/ruby-build/archive/v20130518.tar.gz | tar -zxvf - -C /tmp/
+ 
+# Install ruby-build
+RUN cd /tmp/ruby-build-* && ./install.sh && cd / && rm -rfv /tmp/ruby-build-master
+ 
+# Install ruby
+RUN ruby-build -v 1.9.3-p429 /usr/local
+ 
+# Install gems
+RUN gem install bundler rubygems-bundler --no-rdoc --no-ri
+RUN gem install rails -v 3.2.13 --no-rdoc --no-ri
+RUN gem install mharris_ext therubyracer --no-rdoc --no-ri
+ 
+# Regenerate binstubs
+RUN gem regenerate_binstubs
+
+# Make test rails app
+RUN mkdir ~/code
+RUN cd ~/code && rails new testapp 
+RUN echo "\ngem 'therubyracer'\ngem 'mharris_ext'" >> ~/code/testapp/Gemfile
+RUN cd ~/code/testapp && bundle install 
