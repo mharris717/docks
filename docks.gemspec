@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "defs/mharris717.yml",
     "dockerfiles/rubybuild_rails",
+    "docks.gemspec",
     "lib/docks.rb",
     "lib/docks/line.rb",
     "lib/docks/list.rb",
